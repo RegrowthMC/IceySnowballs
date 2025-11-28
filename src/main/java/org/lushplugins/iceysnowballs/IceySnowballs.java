@@ -1,26 +1,22 @@
 package org.lushplugins.iceysnowballs;
 
+import org.bukkit.entity.EntityType;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class IceySnowballs extends JavaPlugin {
-    private static IceySnowballs plugin;
-
-    @Override
-    public void onLoad() {
-        plugin = this;
-    }
+public final class IceySnowballs extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        // Enable implementation
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
-    @Override
-    public void onDisable() {
-        // Disable implementation
-    }
-
-    public static IceySnowballs getInstance() {
-        return plugin;
+    @EventHandler
+    public void onSnowballHitPlayer(EntityDamageByEntityEvent event) {
+        if (event.getDamager().getType() == EntityType.SNOWBALL) {
+            event.getEntity().setFreezeTicks(100);
+        }
     }
 }
