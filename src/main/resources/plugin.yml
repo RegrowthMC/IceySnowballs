@@ -2,3 +2,4 @@ name: IceySnowballs
 version: ${project.version}
 main: org.lushplugins.iceysnowballs.IceySnowballs
 api-version: '1.17'
+github-repo: RegrowthMC/IceySnowballs
